@@ -4,7 +4,11 @@ var Schema = mongoose.Schema;
 
 var articleSchema = new Schema({
   title: String,
-  date: Date,
+  date: String,
+  dateSaved: {
+    type: Date,
+    default: Date.now
+  },
   url: String
 });
 
