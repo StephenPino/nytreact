@@ -1,13 +1,18 @@
-import React from "react";
-import Navbar from "./common/Navbar";
-import Footer from "./common/Footer";
+import React, {Component} from "react";
+import Saved from "./common/Saved";
+import Search from "./common/Search";
 
-const Main = props => (
-  <div>
-    <Navbar />
-    {props.children}
-    <Footer />
-  </div>
-);
+class Main extends Component {
+  
+
+
+  render() {
+    return (
+      <div className="container">
+        <h1>This is rendering</h1>
+      </div>
+    )
+  }
+}
 
 export default Main;

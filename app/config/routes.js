@@ -1,17 +1,13 @@
 import React from "react";
-import { Route, IndexRoute, Router, browserHistory } from "react-router";
+import { Route, BrowserRouter } from "react-router-dom";
 
 import Main from "../components/Main";
-import Favorites from "../components/Favorites";
-import Home from "../components/Home";
 
 const routes = (
-  <Router history={browserHistory}>
+  <BrowserRouter>
     <Route path="/" component={Main}>
-    <Route path="favorites" component={Favorites} />
-    <IndexRoute component={Home} />
     </Route>
-  </Router>
+  </BrowserRouter>
 );
 
 export default routes;
