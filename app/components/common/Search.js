@@ -8,7 +8,7 @@ class Search extends Component {
             <div className="panel panel-primary">
                 {/*<!-- Search Paramemters Box -->*/}
                 <div className="panel-heading panelBack">
-                    <span className="glyphicon glyphicon-th-list"> Search Parameters</span>
+                    <span className="glyphicon glyphicon-th-list"></span><h8> Search Parameters </h8>
                 </div>
                 <div className="panel-body">
                     <form  id="searchBox">
