@@ -7,7 +7,7 @@ var routes = require("./routes/routes");
 
 // Set up a default port, configure mongoose, configure our middleware
 var PORT = process.env.PORT || 3000;
-mongoose.Promise = bluebird;
+mongoose.Promise = Promise;
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
