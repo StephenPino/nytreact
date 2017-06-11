@@ -1,4 +1,4 @@
-var Articles = require("../models/article");
+var Articles = require("../models/Article");
 
 module.exports = {
 
