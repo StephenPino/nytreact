@@ -14,18 +14,21 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + "/public"));
 app.use("/", routes);
 
-var db = process.env.MONGODB_URI || "mongodb://localhost/nytreact";
+if (process.env.MONGODB_URI) {
+  mongoose = mongoose.connect(process.env.MONGODB_URI);
+} else {
+  mongoose = mongoose.connect("mongodb://localhost/nytreact");
+}
 
-// Connect mongoose to our database
-mongoose.connect(db, function(error) {
-  // Log any errors connecting with mongoose
-  if (error) {
-    console.error(error);
-  }
-  // Or log a success message
-  else {
-    console.log("mongoose connection is successful");
-  }
+
+var db = mongoose.connection;
+
+db.on("error", function(err) {
+  console.log(`Mongoose Error: ${err}`);
+});
+
+db.once("open", function() {
+  console.log("Mongoose connection successful!")
 });
 
 // Start the server

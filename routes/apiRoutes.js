@@ -1,5 +1,5 @@
 var express = require("express");
-var articleController = require("../controllers/quotesController");
+var articleController = require("../controllers/articleController");
 var router = new express.Router();
 
 router.get("/saved", articleController.find);
