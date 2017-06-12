@@ -20,7 +20,7 @@ const Results = (props) => {
               <p><strong>Date Published: </strong> {article.pub_date}</p>
               <a href={article.web_url} target="_blank" >{article.web_url}</a>
               <br/>
-              <button name={i} className="btn btn-primary" onClick={saveArticle}>Save Article</button>
+              <button name={i} className="btn btn-primary"  onClick={saveArticle}>Save Article</button>
             </div>
           ))
         }

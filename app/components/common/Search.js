@@ -81,13 +81,13 @@ class Search extends Component {
             <div className="panel panel-primary">
 
                 <div className="panel-heading panelBack">
-                    <h8> Search Parameters </h8>
+                    <h8> Search </h8>
                 </div>
                 <div className="panel-body">
                     <form onSubmit={this.handleSubmit} id="searchBox">
                         <div className="form-group">
-                            <label htmlFor="searchTerm">Search Term</label>
-                            <input type="text" className="form-control" name="searchTerm" placeholder="Search anything" value={this.state.searchTerm} onChange={this.updateSearchTerm} />
+                            <label htmlFor="searchTerm">Search: </label>
+                            <input type="text" className="form-control" name="searchTerm" placeholder="Enter what you're searching for here" value={this.state.searchTerm} onChange={this.updateSearchTerm} />
                         </div>
                         <div className="form-group">
                             <label htmlFor="retrieveNumber">Number of Records to Retrieve</label>
@@ -106,11 +106,17 @@ class Search extends Component {
                             <input type="text" className="form-control" name="endYear" placeholder="" value={this.state.endYear} onChange={this.updateEndYear} />
                         </div>
                         <button type="submit" id="searchButton" className="btn btn-default">Search</button>
-                        <button id="clearButton" className="btn btn-danger" onClick={this.clearSearch}>Clear Results</button>
+                        <button id="clearButton" style={styles.clearButtonStyle} className="btn btn-danger" onClick={this.clearSearch}>Clear</button>
                     </form>
                 </div>
             </div>
         )
+    }
+}
+
+const styles = {
+    clearButtonStyle: {
+        marginLeft: 10
     }
 }
 
