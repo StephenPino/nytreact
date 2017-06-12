@@ -1,24 +1,40 @@
-import axios from "axios";
+var axios = require("axios");
+var apiKey = "6313697928e84621a759be1347a19091";
 
-const API = {
-  // Retrieves all quotes from the db
-  getQuotes: function() {
-    return axios.get("/api/quotes");
+// Helper functions
+var api = {
+
+  getNyTimesArticles: function(searchTerm, startYear, endYear){
+    var baseUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+    var params = "?api-key="+apiKey;
+    params+="&q="+searchTerm;
+    if(startYear)
+      params+="&begin_date="+startYear+"0101";
+    if(endYear)
+      params+="&end_date="+endYear+"1231";
+
+    return axios.get(baseUrl+params);
   },
-  // Saves a new quote to the db
-  saveQuote: function(text) {
-    return axios.post("/api/quotes", { text });
+
+  saveArticle: function(article) {
+    var newArticle = {
+      title: article.headline.main,
+      section: article.section_name,
+      date: article.pub_date,
+      url: article.web_url
+    };
+    newArticle.by = article.byline ? article.byline.original : "No Author";
+    
+    return axios.post("/api/saved", newArticle);
   },
-  // Deletes a quote from the db
-  deleteQuote: function(id) {
-    return axios.delete(`/api/quotes/${id}`);
+
+  getSavedArticles: function() {
+    return axios.get("/api/saved");
   },
-  // Toggles a quote's favorite property in the db
-  favoriteQuote: function(quote) {
-    quote.favorited = !quote.favorited;
-    const { _id, favorited } = quote;
-    return axios.patch(`/api/quotes/${_id}`, { favorited });
-  }
+
+  removeArticle: function(id){
+    return axios.delete("/api/saved", {params: {id: id}});
+  },
 };
 
-export default API;
+module.exports = api;
