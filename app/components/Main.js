@@ -3,6 +3,8 @@ import Saved from "./common/Saved";
 import Search from "./common/Search";
 import Results from "./common/Results";
 
+import { Route, Link } from "react-router-dom";
+
 var api = require("../utils/API.js");
 
 class Main extends Component {
@@ -27,7 +29,7 @@ class Main extends Component {
 
   }
 
-    componentDidMount() {
+  componentDidMount() {
     api.getSavedArticles().then((response) => {
       if (response.data !== this.state.savedArticles) {
         this.setState({ savedArticles: response.data });
@@ -45,7 +47,7 @@ class Main extends Component {
   }
 
   setResults(results) {
-    this.setState({searchResults: results});
+    this.setState({ searchResults: results });
   }
 
   saveArticle(index) {
@@ -62,13 +64,13 @@ class Main extends Component {
 
   getArticles() {
     api.getSavedArticles().then((response) => {
-      this.setState({savedArticles: response.data});
+      this.setState({ savedArticles: response.data });
     });
   }
 
   clearSearch() {
     var newState = {
-      searchTerm: "", 
+      searchTerm: "",
       limit: 5,
       startYear: "",
       endYear: "",
@@ -85,9 +87,11 @@ class Main extends Component {
         <div className="jumbotron text-center" style={styles.jumbotronStyle}>
           <h1 style={styles.textStyle}>New York Times Searcher</h1>
         </div>
-        <Search setSearch={this.setSearch} setResults={this.setResults} clearSearch={this.clearSearch}/>
-        <Results passedResults={this.state.searchResults} saveArticle={this.saveArticle}/>
-        <Saved savedArticles={this.state.savedArticles} removeArticle={this.removeArticle}/>
+        <Search setSearch={this.setSearch} setResults={this.setResults} clearSearch={this.clearSearch} />
+        <div>
+          <Route exact path="/" render={()=><Results passedResults={this.state.searchResults} saveArticle={this.saveArticle}/>}/>
+          <Route path="/saved" render={()=><Saved savedArticles={this.state.savedArticles} removeArticle={this.removeArticle}/>} />
+        </div>
       </div>
     )
   }

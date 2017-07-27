@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+
+import { Route, Link } from "react-router-dom";
+
 var api = require("../../utils/API.js");
 
 class Search extends Component {
@@ -107,6 +110,9 @@ class Search extends Component {
                         </div>
                         <button type="submit" id="searchButton" className="btn btn-default">Search</button>
                         <button id="clearButton" style={styles.clearButtonStyle} className="btn btn-danger" onClick={this.clearSearch}>Clear</button>
+                        <Link to="/"><button className="btn btn-success" style={styles.clearButtonStyle}>Results</button></Link>
+                        <Link to="/saved"><button className="btn btn-warning" style={styles.clearButtonStyle}>Saved Articles</button></Link>
+                        
                     </form>
                 </div>
             </div>
