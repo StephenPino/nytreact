@@ -1,5 +1,5 @@
 # New York Times Searcher
-### Stephen Pino
+### By: Stephen Pino
 
 ## Description:
 This application utilizes The New York Times API to search for articles based on multiple search parameters.  Articles queried can then be saved and then deleted once saved.
